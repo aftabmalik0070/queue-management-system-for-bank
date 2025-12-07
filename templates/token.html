@@ -1,0 +1,22 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Allforone_cssfile.css') }}">
+    <title>Customer Kiosk</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Token</h2>
+        <p>Service: <strong>{{ service }}</strong></p>
+        <p>Account ID: <strong>{{ account_id }}</strong></p>
+        
+        <div id="token-display">{{ token }}</div>
+
+        <p>Please wait to be called.</p>
+        
+        <br>
+        <a href="{{ url_for('customer_page') }}">Get Another Token</a>
+    </div>
+
+</body>
+</html>

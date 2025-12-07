@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Login Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Allforone_cssfile.css') }}">
+</head>
+
+<body class="centered-mode">
+
+    <div class="container">
+        <h1>User Login</h1>
+        <hr>
+
+        <form action="/message" method="POST">
+
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit">Log In</button>
+
+        </form>
+
+        {% if msg %}
+            <p style="color: red; font-weight: bold; margin-top: 15px;">
+                {{ msg }}
+            </p>
+        {% endif %}
+
+        <hr>
+    </div>
+
+</body>
+</html>

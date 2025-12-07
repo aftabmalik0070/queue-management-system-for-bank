@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Teller Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Allforone_cssfile.css') }}">
+</head>
+<body>
+
+    <h1>Teller Dashboard</h1>
+    <h3>Welcome, {{ user }} <small>({{ skills }})</small></h3>
+    <br>
+    <a href="/login">Logout</a>
+    <hr>
+
+    <div class="box">
+        <h2>Status</h2>
+        
+        <p style="font-size: 1.2em; font-weight: bold; color: #0056b3;">
+            {{ customer_status if customer_status else "Idle" }}
+        </p>
+        
+        <br>
+
+        {% if serving_token %}
+            
+            <form action="/complete_transaction" method="POST">
+                <input type="hidden" name="user" value="{{ user }}">
+                <input type="hidden" name="skills" value="{{ skills }}">
+                <input type="hidden" name="teller_id" value="{{ teller_id }}">
+                
+                <button type="submit" class="btn-red">
+                    Complete Transaction ({{ serving_token }})
+                </button>
+            </form>
+
+        {% else %}
+
+            <form action="/next_customer" method="POST">
+                <input type="hidden" name="user" value="{{ user }}">
+                <input type="hidden" name="skills" value="{{ skills }}">
+                <input type="hidden" name="teller_id" value="{{ teller_id }}">
+                
+                <button type="submit" class="btn-green">
+                    Call Next Customer
+                </button>
+            </form>
+
+        {% endif %}
+    </div>
+
+</body>
+</html>

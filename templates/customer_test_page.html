@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Customer Kiosk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Allforone_cssfile.css') }}">
+</head>
+<body>
+
+    <div id="kiosk-container">
+        <h1>Welcome, Please Choose Your Service</h1>
+        
+        <form action="/submit_form" method="POST">
+            <div>
+                <div>
+                    <label for="account-id">Account ID or Phone (Optional)</label>
+                    <br>
+                    <input type="text" id="account-id" name="account-id">
+                </div>
+                
+                <hr>
+
+               <div>
+                    <h2>Select Service:</h2>
+                    
+                    <input type="radio" id="new-account" name="selected-service" value="New Account" required>
+                    <label for="new-account">New Account</label>
+                    <br><br>
+                    
+                    <input type="radio" id="cash-deposit" name="selected-service" value="Cash Deposit">
+                    <label for="cash-deposit">Cash Deposit</label>
+                    <br><br>
+                    
+                    <input type="radio" id="loan-application" name="selected-service" value="Loan Application">
+                    <label for="loan-application">Loan Application</label>
+                    <br><br>
+                    
+                    <input type="radio" id="bills" name="selected-service" value="Bills">
+                    <label for="bills">Bills</label>
+                    <br><br>
+
+                    <button type="submit">Get Token</button>
+                </div>
+
+                <p id="kiosk-error" style="color: red; display: none;"></p>
+            </div>
+        </div></form>
+
+        <div id="token-container" style="display: none;">
+            <h2>Your Token</h2>
+            <div id="token-display" style="font-size: 3rem; font-weight: bold; border: 2px solid #333; padding: 20px;">
+            </div>
+
+            <p>Please wait to be called.</p>
+            
+            <br>
+            <button>Get Another Token</button>
+        </div>
+    
+</body>
+</html>
+
+
